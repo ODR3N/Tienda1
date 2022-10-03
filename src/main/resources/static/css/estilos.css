@@ -1,0 +1,11 @@
+body{
+    background-color: aquamarine;
+}
+p{
+    background-color: burlywood;
+}
+
+article header{
+    background-color: chartreuse;
+    color: white;
+}
