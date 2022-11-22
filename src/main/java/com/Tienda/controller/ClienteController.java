@@ -15,6 +15,13 @@ public class ClienteController {
 
     @Autowired
     private ClienteService clienteService;
+    
+    @GetMapping("/cliente/listado")
+    public String listado(Model model){
+        var clientes=clienteService.getClientes();
+        model.addAttribute("clientes",clientes);
+                return "/cliente/modificar";
+    }
 
     @GetMapping("/cliente/nuevo")
     public String clienteNuevo(Cliente cliente) {

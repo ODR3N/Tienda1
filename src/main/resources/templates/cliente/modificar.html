@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <a th:href="@(/cliente/listado}">Regresar</a>
+
+        <hr/>
+
+        <form th:action="@(/cliente/guardar}"
+
+              method="post"
+
+              th:object="${cliente}">
+
+            <input type="hidden" name="idCliente" th: field="* (idCliente)"/> <input type="hidden" name="idCredito" th: field="* (credito.idCredito)"/>
+
+            <fieldset>
+
+                <label for="nombre">Nombre</label>
+
+                <input type="text" name="nombre" th:field="" (nombre}"/>
+
+            </fieldset>
+
+            <fieldset>
+
+                <label for="apellidos">Apellidos</label>
+
+                <input type="text" name="apellidos" th:field="* (apellidos)"/>
+
+            </fieldset>
+
+            <fieldset>
+
+                <label for="correo">Correo</label>
+
+                <input type="email" name="correo" th:field="" (correo}"/>
+
+            </fieldset>
+
+            <fieldset>
+
+                <label for="telefono">Teléfono</label>
+
+                <input type="tel" name="telefono" th: field="*(telefono)"/>
+
+            </fieldset>
+
+            <fieldset>
+
+                <label for="limite">Limite de crédito</label>
+
+                <input type="number" name="limite" th:field="* (credito.limite)"/>
+
+            </fieldset>
+
+            <hr/>
+
+            <input type="submit" value="Guardar" name="guardar"/>
+
+        </form>
+
+    </div>
+
+    <footer th:replace="layout/plantilla :: footer"/>
+
+</body>
+
+</html>
