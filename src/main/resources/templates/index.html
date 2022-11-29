@@ -1,33 +1,27 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TechShop</title>
-        <meta charset="UTF-8"/>        
+    <head th:replace="layout/plantilla :: head">
+        <title>TechShop</title>       
     </head>
     <body>
         <header th:replace="layout/plantilla :: header"/>
-        <div class="contenido">
-            <h2>Nuestros Articulos</h2>
-
-            <a th:href="@{/cliente/nuevo}">Nuevo Cliente</a>
-            <div th:if="${clientes !=null and !clientes.empty}">
-                <table border="1">
-                    <tr>
-                        <th>Descripcion</th>
-                        <th>Precio</th>
-
-                    </tr>
-                    <tr th:each="articulo : ${articulos}">
-                        <td>[[${articulo.descripcion}]]</td>
-                        <td style="text-align: right">[[${#numbers.formaDecimal(articulo.precio,3,2)}]]</td>
-                        <td> <a th:href="@{/carrito/Agregar/} + ${articulo.idArticulo}"> Agregar </td>
-                    </tr>            
-                </table>
+        <div class="container">
+            <h2>[[#{index.titulo}]]</h2>            
+            <div class="row row-cols-3" th:if="${articulos !=null and !articulos.empty}">
+                <div class="card" th:each="articulo : ${articulos}">
+                    <div class="card-body">
+                        <h5 class="card-title">[[${articulo.descripcion}]]</h5>
+                        <h6 class="card-subtitle mb-2 text-muted text-end">
+                            [[${#numbers.formatDecimal(articulo.precio,3,2)}]]</h6>
+                        <a class="card-link" th:href="@{/carrito/agregar/} + ${articulo.idArticulo}">[[#{accion.agregar}]]</a>
+                        <p class="card-text">[[${articulo.detalle}]]</p>
+                    </div>
+                </div>
             </div>
 
-            <div th:if="${articuloss ==null or articulos.empty}">
-                <h2>No hay clientes que mostrar</h2>
+            <div th:if="${articulos ==null or articulos.empty}">
+                <h2>[[#{articulo.no_mostrar}]]</h2>
             </div>
         </div>
         <footer th:replace="layout/plantilla :: footer"/>

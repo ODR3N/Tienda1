@@ -1,11 +1,11 @@
 package com.Tienda.dao;
 
 import com.Tienda.domain.Cliente;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ClienteDao 
-        extends JpaRepository <Cliente, Long>{
-    
+        extends JpaRepository<Cliente, Long>{
     
     //Consultas ampliadas de JPA
     public List<Cliente> findByNombre(String nombre);
@@ -15,7 +15,5 @@ public interface ClienteDao
     public List<Cliente> findByCorreo(String correo);
     
     public List<Cliente> findByTelefono(String telefono);
-    //Se puede utilizar el "findbybetween" pazra buscar entre rangos
-    
     
 }

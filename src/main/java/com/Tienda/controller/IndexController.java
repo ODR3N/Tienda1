@@ -1,6 +1,5 @@
 package com.Tienda.controller;
 
-import com.Tienda.dao.ArticuloDao;
 import com.Tienda.service.ArticuloService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,12 +15,8 @@ public class IndexController {
     private ArticuloService articuloService;
     
     @GetMapping("/")
-    public String inicio(Model model) {
-        var texto = "Estamos en semana 6";
-        model.addAttribute("mensaje", texto);
-        
-        var articulos=articuloService.getArticulos();
-        
+    public String inicio(Model model) {        
+        var articulos=articuloService.getArticulos(true);
         model.addAttribute("articulos",articulos);
         return "index";
     }
